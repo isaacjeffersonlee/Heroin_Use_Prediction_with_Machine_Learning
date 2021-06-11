@@ -92,8 +92,6 @@
      \item  \textbf{1} : Used Heroin at least once 
  \end{itemize}
 In terms of the balance of data, we have 1605 non-users and 280 who have used.
-This is not a massive number of participants so it will remain to be seen whether
-this affects the ceiling of our models accuracy/variation.
  \begin{figure}[h!]
     \centering
      \includegraphics[scale=1.1]{df.png}
@@ -104,13 +102,15 @@ this affects the ceiling of our models accuracy/variation.
     \begin{itemize}
  \item \textbf{Age : } 0 : 18-24 | 1 : 25-34 | 2 : 35-44 | 3 : 45-54 | 4 : 55-64 | 5 : 65+
  \item \textbf{Gender : } 0 : Female | 1 : Male
- \item \textbf{Education : } 0 : Left school before 18 years |  1 : Left school at 18 years | 
- 2 : Some college or university but no certificate or degree | 3 : Professional certificate/ diploma | 4 : University degree | 5 : Masters degree | 6 : Doctorate degree
+ \item \textbf{Education : } 0 : Left school before 18 years 
+ |  1 : Left school at 18 years \\
+  2 : Some college or university but no certificate or degree \\
+  3 : Professional certificate/diploma | 4 : University degree \\
+  5 : Masters degree | 6 : Doctorate degree
  \item \textbf{Country : } 0 : UK \& Ireland | 1 : New Zealand \& Australia | 2 : USA \& Canada | 3 : Other \\
- ~ ~ \\
- For the numerical features, we have information on "the Big Five" personality traits which
- are tested by the NEO-FFI-R $^{[3]}$ \\
- \textbf{Note:} SS stands for "Sensation Seeking".
+ \item \textbf{Personality Scores: } For the numerical features, we have information on "the Big Five" personality traits which
+ are tested by the NEO-FFI-R: (N) Neuroticism | (E) Extraversion | (O) Openness to experience | (A) Agreeableness | (C) Conscientiousness $^{[3]}$
+ \item \textbf{Impulsive \& SS: } Impulsive and (SS) Sensation Seeking which are measured by the Barrratt Impulsive Scale (BIS-11) $^{[3]}$
  \end{itemize}
  
 
@@ -118,11 +118,7 @@ this affects the ceiling of our models accuracy/variation.
 
   \begin{block}{Feature Engineering/Encoding}
  \begin{itemize}
-     \item \textbf{Encoding :} The original data set did not use integer values for the categorical
- features, but in order to use OneHot Encoding integers are required.
- Then after conversion to integer values we use the pandas get dummies function to 
- encode the Country and Gender features, since they are nominal and so therefore integer encoding
- will add unwanted ordinal information.
+     \item \textbf{Encoding :} The original data set used nonlinear Categorical Principle Component Analysis for the nominal features and polychloric correlation for the ordinal features$^{[2]}$. I wanted to experiment with OneHot encoding, so instead I first converted to integer encoding and then used the pandas get\_dummies function to OneHot encode Gender and Country.  
   \item \textbf{Binarization :} The original data set contains four classes, such as: "used in the past day", "used in the past month" e.t.c. In order to simplify the problem
  we convert to: "never used" and "used at some point in the past".
   \item \textbf{Country Combinations :} Several countries have very few participants and so
@@ -138,6 +134,7 @@ this affects the ceiling of our models accuracy/variation.
     \footnotesize{The five factor model of personality and evaluation of drug consumption risk, 2017.}
     \small{\item [{[3]}] Michael C. Ashton.} \footnotesize{Chapter 2 - Personality Traits and the Inventories that Measure Them. \\
     Academic Press, San Diego, second edition edition, 2013.}
+    
 \end{description}
 
 
@@ -225,7 +222,7 @@ either a 1 or a 0 given the data we have observed, and predict the most likely. 
   \begin{figure}[h!]
     \centering
      \includegraphics[scale=1.5]{model_results.png}
-    \caption{Model Results}
+    \caption{Model Results.}
     \label{fig:method}
     \end{figure}  
     
