@@ -1,4 +1,5 @@
-# Imperial College Project 6 Source Code
+# Who has used Heroin? An Application of Machine Learning in Drug Use Prediction
+## Imperial College Project 6
 ## Author: Isaac Lee CID: 01859216
 
 ## Introduction
