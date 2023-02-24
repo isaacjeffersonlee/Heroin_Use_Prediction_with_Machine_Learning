@@ -1,6 +1,4 @@
 # Who has used Heroin? An Application of Machine Learning in Drug Use Prediction
-## Imperial College Project 6
-## Author: Isaac Lee CID: 01859216
 
 ## Introduction
 In this project we look to answer the question: is it possible to distinguish between people who have
